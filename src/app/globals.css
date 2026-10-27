@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* -----------------------------------------------------------------------------
+   Theme — change these to re-skin the whole template
+   ----------------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0d2233;        /* headings, dark buttons */
+  --color-ink-soft: #1d3a50;
+  --color-muted: #50636f;      /* body text */
+  --color-faint: #7d8e9a;
+  --color-mist: #e6ecf1;
+  --color-steel: #a9b8c4;
+}
+
+:root {
+  --page-bg:
+    radial-gradient(1200px 600px at 15% -10%, rgba(255, 255, 255, 0.9), transparent 60%),
+    radial-gradient(900px 700px at 100% 30%, rgba(171, 199, 214, 0.55), transparent 60%),
+    linear-gradient(170deg, #dfe6ec 0%, #c3cfd9 40%, #96a8b6 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.page-bg {
+  background: var(--page-bg);
+}
+
+body {
+  background: #c3cfd9;
+  color: var(--color-ink);
+}
+
+/* Frosted glass surfaces */
+@utility glass {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 18px 45px -22px rgba(22, 45, 65, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+@utility glass-strong {
+  background: linear-gradient(160deg, rgba(250, 252, 253, 0.92), rgba(233, 239, 243, 0.78));
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 40px 80px -40px rgba(15, 35, 52, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@utility glass-sheet {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 40px 90px -50px rgba(15, 35, 52, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* The little glass "bead" in the top-right corner of cards */
+@utility glass-dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #fff, rgba(255, 255, 255, 0.55));
+  box-shadow:
+    0 2px 6px rgba(20, 40, 60, 0.25),
+    inset 0 -1px 2px rgba(20, 40, 60, 0.15);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    animation: none;
+  }
+}
